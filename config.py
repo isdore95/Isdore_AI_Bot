@@ -1,0 +1,19 @@
+# ===========================
+# ISDORE AI BOT CONFIGURATION
+# ===========================
+
+BOT_TOKEN = "PASTE_YOUR_TELEGRAM_BOT_TOKEN"
+
+CHAT_ID = "6781233916"
+
+SYMBOL = "EURUSD=X"
+
+TIMEFRAME = "1m"
+
+FAST_EMA = 20
+
+SLOW_EMA = 50
+
+BOT_NAME = "ISDORE AI BOT"
+
+VERSION = "1.0"
