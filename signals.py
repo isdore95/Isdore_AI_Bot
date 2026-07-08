@@ -39,4 +39,5 @@ def send_signal(signal, confidence):
         timeout=10
     )
 
+    print("Telegram Response:")
     print(response.text)
