@@ -22,8 +22,5 @@ else:
     print(f"Lot Size   : {lot}")
     print(f"Expiry     : {expiry}")
 
-    if signal != "WAIT":
-        send_signal(signal, confidence)
-        print("Telegram signal sent.")
-    else:
-        print("No trading opportunity.")
+    send_signal(signal, confidence)
+    print("Telegram signal sent.")
