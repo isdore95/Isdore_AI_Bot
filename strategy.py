@@ -1,6 +1,8 @@
+
 import pandas as pd
 
 def calculate_signal(data):
+
     if data.empty:
         return "WAIT", 0
 
@@ -14,7 +16,9 @@ def calculate_signal(data):
 
     if current20 > current50:
         return "BUY", 85
+
     elif current20 < current50:
         return "SELL", 85
+
     else:
         return "WAIT", 50
