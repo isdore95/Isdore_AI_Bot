@@ -30,7 +30,7 @@ def send_signal(signal, confidence):
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
-    requests.post(
+    response = requests.post(
         url,
         data={
             "chat_id": CHAT_ID,
@@ -38,3 +38,5 @@ def send_signal(signal, confidence):
         },
         timeout=10
     )
+
+    print(response.text)
