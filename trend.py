@@ -1,21 +1,18 @@
 import pandas as pd
 
-def get_trend(close):
+def trend_filter(data):
+    if data.empty:
+        return "SIDEWAYS"
 
-    ema20 = close.ewm(span=20).mean()
+    close = data["Close"].squeeze()
+
     ema50 = close.ewm(span=50).mean()
     ema200 = close.ewm(span=200).mean()
 
-    if (
-        ema20.iloc[-1] > ema50.iloc[-1]
-        and ema50.iloc[-1] > ema200.iloc[-1]
-    ):
+    if ema50.iloc[-1] > ema200.iloc[-1]:
         return "UP"
 
-    if (
-        ema20.iloc[-1] < ema50.iloc[-1]
-        and ema50.iloc[-1] < ema200.iloc[-1]
-    ):
+    elif ema50.iloc[-1] < ema200.iloc[-1]:
         return "DOWN"
 
     return "SIDEWAYS"
