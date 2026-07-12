@@ -1,21 +1,22 @@
 import yfinance as yf
 import pandas as pd
 
-def get_market_data(symbol="EURUSD=X", interval="1m", period="1d"):
+def get_market_data(symbol="EURUSD=X", interval="1m", period="5d"):
     try:
         data = yf.download(
             symbol,
             interval=interval,
             period=period,
             progress=False,
-            auto_adjust=True
+            auto_adjust=True,
+            threads=False
         )
 
         if data.empty:
-            raise Exception("No market data received.")
+            return pd.DataFrame()
 
-        return data
+        return data.dropna()
 
     except Exception as e:
-        print("Market Error:", e)
+        print(e)
         return pd.DataFrame()
