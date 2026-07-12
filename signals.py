@@ -2,9 +2,11 @@ import os
 import requests
 from risk import calculate_lot, expiry_time
 
-BOT_TOKEN = os.getenv("BOT_TOKEN")
-CHAT_ID = os.getenv("CHAT_ID")
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+CHAT_ID = os.environ.get("CHAT_ID")
 
+print("BOT_TOKEN Loaded:", BOT_TOKEN is not None)
+print("CHAT_ID Loaded:", CHAT_ID is not None)
 def send_signal(signal, confidence):
 
     if not BOT_TOKEN or not CHAT_ID:
