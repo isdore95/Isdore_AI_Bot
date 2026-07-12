@@ -32,16 +32,19 @@ def bearish_engulfing(data):
 
 def pin_bar(data):
 
+    if len(data) < 1:
+        return None
+
     candle = data.iloc[-1]
 
     body = abs(candle["Close"] - candle["Open"])
     upper = candle["High"] - max(candle["Close"], candle["Open"])
     lower = min(candle["Close"], candle["Open"]) - candle["Low"]
 
-    if lower > body * 2:
+    if lower > body * 2 and upper < body:
         return "BULLISH"
 
-    if upper > body * 2:
+    if upper > body * 2 and lower < body:
         return "BEARISH"
 
-    return "NONE"
+    return None
