@@ -21,6 +21,8 @@ else:
     print(f"Confidence : {confidence}%")
     print(f"Lot Size   : {lot}")
     print(f"Expiry     : {expiry}")
-
+if signal != "WAIT":
     send_signal(signal, confidence)
     print("Telegram signal sent.")
+else:
+    print("No trade setup found.")
